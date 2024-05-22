@@ -33,3 +33,7 @@ primary key(name,eid));
 pno int references project(pno),
 hpw int,
 primary key(eid,pno));
+
+ create table empphno(eid int references employeee(eid),
+phno int,
+primary key(eid,phno));
