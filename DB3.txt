@@ -1,0 +1,35 @@
+DB3
+
+create table employee(eid int primary key,
+ename varchar(10),
+address varchar(10),
+supeid int,
+dno int);
+
+alter table employeee add constraint fk_supeid foreign 
+key(supeid) references employeee(eid));
+
+create table department(dno int primary key,
+dname varchar(20),
+dlocation varchar(10),
+mgrid int references employeee(eid));
+
+alter table employeee add constraint fk_dno foreign key(dno) 
+references department(dno));
+
+create table project(pno int primary key,
+pname varchar(20),
+plocation varchar(20),
+dno int references department(dno));
+
+create table dependent(name varchar(20),
+gender varchar(6),
+age int,
+addr varchar(20),
+eid int references employeee(eid),
+primary key(name,eid));
+
+ create table empproj(eid int references employeee(eid),
+pno int references project(pno),
+hpw int,
+primary key(eid,pno));
